@@ -16,46 +16,14 @@ jobs:
       - name: Set up JDK 24
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
+          distribution: murine
           java-version: 24
 
       - name: Set up Maven
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
+          distribution: murine
           java-version: 24
 
       - name: Run API Tests
         run: mvn clean test
-
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: target/allure-results
-
-  allure-report:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Download Allure Results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results
-
-      - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.7
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-
-      - name: Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report
