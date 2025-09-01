@@ -1,5 +1,5 @@
 # System Requirement
-## 1. Java SDK version 24 installed.
+## 1. Java SDK version 17 installed.
 ## 2. Apache Maven installed.
 
 # Execute Test
