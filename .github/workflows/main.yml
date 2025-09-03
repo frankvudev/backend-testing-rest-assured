@@ -19,11 +19,5 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Set up Maven
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-
       - name: Run API Tests
-        run: mvn clean test
+        run: mvn clean test allure:serve
